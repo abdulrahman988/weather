@@ -52,13 +52,11 @@ object NetworkModule{
                 val original: Request = chain.request()
                 val request: Request = original.newBuilder()
                     .header(
-                        "X-RapidAPI-Key",
-                        "edc98075b8mshd7dfb2a25bb9d10p18cdccjsnbad1ee2b689a"
+                        "appid",
+                        "ba893881ef3ab641ec2f52f4427661bb"
                     )
-                    .header(
-                      "X-RapidAPI-Host",
-                        "foreca-weather.p.rapidapi.com"
-                    ).build()
+
+                    .build()
                 chain.proceed(request)
             })
         return okHttpClientBuilder.build()
@@ -71,7 +69,7 @@ object NetworkModule{
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit {
         return Retrofit.Builder()
-            .baseUrl("https://foreca-weather.p.rapidapi.com")
+            .baseUrl("https://api.openweathermap.org")
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
